@@ -1,4 +1,4 @@
-const url = "http://www.omdbapi.com/?apikey=b159341b&";
+const url = "https://www.omdbapi.com/?apikey=b159341b&";
 function searchFilm() {
     document.getElementById("catalog").innerHTML = null;
     document.getElementById("js-pagination").innerHTML = null;

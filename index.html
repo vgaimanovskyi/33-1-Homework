@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/d223746498.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="plugins/script.js"></script>
+
+    <title>33_Homework</title>
+</head>
+
+<body>
+    <div class="mainer">
+        <form action="" class="form" onsubmit="return false">
+            <label for="search">Enter film's title:</label>
+            <input type="text" id="input-search" name="search" placeholder="For example: Bad Boys for Life" required>
+            <select id="type-search" required>
+                <option value="movie" selected>Movie</option>
+                <option value="series">Series</option>
+                <option value="episode">Episode</option>
+            </select>
+            <button type="submit" onclick="searchFilm()">Search</button>
+            <button onclick="clearCatalog()">Clear</button>
+        </form>
+
+        <div class="catalog" id="catalog">
+            <!-- list from Ajax response => searchFilm() script.js -->
+        </div>
+        <div class="pagination" id="js-pagination">
+            <!-- span from searchFilm() => script.js -->
+        </div>
+        <div class="modal hidden" id="modal">
+            <div class="body">
+                <button class="close" onclick="modalClose()">x</button>
+                <div class="info" id="info">
+                    <!-- item from Ajax response => filmInfo(id) script.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

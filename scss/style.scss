@@ -1,0 +1,207 @@
+@import '_reset';
+
+$colorMain: rgb(241, 241, 28);
+.mainer {
+    max-width: 1400px;
+    padding: 40px 15px;
+    margin: 0 auto;
+    
+}
+button {
+    cursor: pointer;
+}
+.form {
+    max-width: 700px;
+    padding: 15px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    background-color: $colorMain;
+    border: 2px solid #000;
+    border-radius: 4px;
+    font-size: 0;
+
+    label {
+        font-size: 32px;
+    }
+    select,
+    input {
+        margin: 15px 0;
+        padding: 5px;
+        width: 80%;
+        font-size: 24px;
+        line-height: 28px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+    select { width: 20%; }
+    button {
+        font-size: 24px;
+    }
+    button[type=submit] {
+        margin-right: 40px;
+    }
+}
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    position: relative;
+    &__item {
+        width: 20%;
+        box-sizing: border-box;
+        padding: 0 15px;
+        
+    }   
+    .front-side {
+        margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:hover {
+            .back-side { transform: translateY(0);}
+        }
+
+        .poster {
+            width: 100%;
+            height: 370px;
+            display: block;
+            border: 2px solid $colorMain;
+            background-image: linear-gradient($colorMain, rgb(241, 156, 28));
+        }
+    }
+    .back-side {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        color: #000;
+        background-image: linear-gradient($colorMain, rgb(241, 156, 28));
+        transform: translateY(100%);
+        transition-duration: 0.5s;
+        
+        span { padding: 10px 5px; }
+    }
+    .error {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 40px;
+        font-size: 38px;
+        color: red;
+        border: 2px solid $colorMain;
+        text-align: center;
+    }
+}
+.pagination {
+    max-width: 700px;
+    padding: 0;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .pag-nav {
+        display: block;
+        font-size: 32px;
+        line-height: 38px;
+        width: 42px;
+        height: 42px;
+        background-color: $colorMain;
+        text-align: center;
+        margin: 0 5px;
+        cursor: pointer;
+    }        
+    span {
+        font-size: 24px;
+        line-height: 42px;
+        width: 42px;
+        height: 42px;
+        background-color: $colorMain;
+        text-align: center;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &:hover, &.active {
+            background-image: linear-gradient($colorMain, rgb(241, 156, 28));
+            color: red
+        }
+    }
+}
+.modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    &.hidden {
+        display: none;
+    }
+    .body {
+        background-image: linear-gradient($colorMain, rgb(241, 156, 28));
+        border-radius: 4px;
+        padding: 15px;
+        max-width: 1110px;
+        margin: 15px auto;
+        box-sizing: border-box;
+        position: relative;
+        transform: translateY(20%);
+    }
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 25px;
+        height: 25px;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: bold;
+        z-index: 10;
+    }
+    .loader {
+        width: 30px;
+        height: 30px;
+        background-image: url(../images/833.gif);
+        background-size: cover;
+        vertical-align: middle;
+        display: none;
+    }
+    .info { 
+        .poster {
+            width: 100%;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+        .rating {
+            font-size: 18px;
+            color: red;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px 0;
+        }
+        .category {
+            margin: 15px 0;
+            font-size: 20px;
+
+            &:last-child {margin-top: 30px; }
+        }
+    }
+}
+/*
+
+        */

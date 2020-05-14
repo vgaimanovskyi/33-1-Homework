@@ -7,12 +7,13 @@ function searchFilm() {
     fetch(url + "s=" + search + "&type=" + type).then(function (response) {
         return response.json();
     }).then(function (result) {
-        console.log(result)
         if (result.Response === "True") {
 
             const resultLength = result.totalResults;
             const list = result.Search;
             let active;
+
+            // create pagination
             if (list.length) {
                 const onPage = 10;
                 const numberOfPages = Math.ceil(resultLength / onPage);
@@ -45,7 +46,6 @@ function searchFilm() {
                             showPage(active.nextElementSibling);
                         }
                     })
-
                 }
 
                 const pagination = document.querySelectorAll("#js-pagination span");
@@ -63,12 +63,32 @@ function searchFilm() {
                     }
                     active = page;
                     page.classList.add("active");
-                    if (active.textContent == 1 && document.querySelector(".pag-nav.prev")) {
-                        document.querySelector(".pag-nav.prev").style.opacity = "0";
+
+                    // display pagination 
+                    let pagArr = [];
+                    for (let i of pagination) {
+                        pagArr.push(i.innerText);
+                        i.style.display = "none"
                     }
-                    if (active.textContent == numberOfPages && document.querySelector(".pag-nav.next")) {
-                        document.querySelector(".pag-nav.next").style.opacity = "0";
+                    active.style.display = "block";
+                    let start = +active.innerText - 1 < pagination.length - 6 ? +active.innerText - 1 : pagination.length - 7;
+                    let end = +active.innerText + 4 < pagination.length ? +active.innerText + 4 : pagination.length - 1;
+                    let showPag = pagArr.slice(start, end);
+                    for (let i of showPag) {
+                        pagination[i].style.display = "block";
                     }
+                    if (active.textContent == 1) {
+                        document.querySelector(".pag-nav.prev").style.display = "none";
+                    } else {
+                        document.querySelector(".pag-nav.prev").style.display = "block";
+                    }
+                    if (active.textContent == numberOfPages) {
+                        document.querySelector(".pag-nav.next").style.display = "none";
+                    } else {
+                        document.querySelector(".pag-nav.next").style.display = "block";
+                    }
+
+                    // print search result
                     fetch(url + "s=" + search + "&page=" + page.textContent).then(function (response) {
                         return response.json();
                     }).then(function (result) {

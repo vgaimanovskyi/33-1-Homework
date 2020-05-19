@@ -175,6 +175,7 @@ function modalClose() {
     const modal = document.getElementById("modal");
     modal.classList.add("hidden");
     document.getElementsByTagName("body")[0].removeAttribute("style");
+    document.getElementById("modal").innerHTML = null;
 }
 
 function toggleFavourite(id, button) {

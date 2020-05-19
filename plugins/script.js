@@ -121,6 +121,8 @@ function searchFilm() {
 
 function filmInfo(id) {
     const modal = document.getElementById("modal");
+    const favouriteList = JSON.parse(localStorage.getItem("favList"));
+    console.log(favouriteList)
     modal.classList.remove("hidden");
     document.getElementsByTagName("body")[0].style.overflowY = "hidden";
     fetch(url + "i=" + id).then(function (response) {
@@ -132,6 +134,9 @@ function filmInfo(id) {
         item += `<img src="${result.Poster !== "N/A" ? result.Poster : 'images/no-poster.png'}" alt="${result.Title}" class="poster">`;
         item += `</div>`; // col-4;
         item += `<div class="col-8">`;
+        item += `<div class="like">`;
+        item += `<i class="fas fa-heart" onclick="toggleFavourite('${result.imdbID}', this)"></i>`;
+        item += `</div>`; // like;
         item += `<div class="title">${result.Title} / ${result.Year}</div>`;
         if (result.imdbRating !== "N/A") {
             item += `<div class="rating">IMDb rating: ${result.imdbRating} /10 (${result.imdbVotes} votes)</div>`;
@@ -151,6 +156,12 @@ function filmInfo(id) {
 
         document.getElementById("info").innerHTML = item;
 
+        for (let like of favouriteList) {
+            if (result.imdbID === like) {
+                modal.querySelector(".fas.fa-heart").classList.add("active");
+            }
+        }
+
     })
 }
 
@@ -165,3 +176,25 @@ function modalClose() {
     modal.classList.add("hidden");
     document.getElementsByTagName("body")[0].removeAttribute("style");
 }
+
+function toggleFavourite(id, button) {
+    let favouriteList = localStorage.getItem("favList");
+    if (button.classList.contains('active')) {
+        let list = JSON.parse(favouriteList);
+        const index = list.indexOf(id);
+        if (index > -1) {
+            list.splice(index, 1);
+        }
+        localStorage.setItem("favList", JSON.stringify(list))
+    } else {
+        if (favouriteList) {
+            let list = JSON.parse(favouriteList);
+            list.push(id);
+            localStorage.setItem("favList", JSON.stringify(list));
+        } else {
+            localStorage.setItem("favList", JSON.stringify([id]));
+        }
+    }
+    button.classList.toggle("active");
+}
+

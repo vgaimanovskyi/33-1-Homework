@@ -90,10 +90,16 @@ button {
 
 .form button {
   font-size: 24px;
+  margin-right: 40px;
 }
 
-.form button[type=submit] {
-  margin-right: 40px;
+.form a {
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.form a:hover .fas.fa-heart {
+  color: red;
 }
 
 .catalog {
@@ -268,6 +274,28 @@ button {
   display: none;
 }
 
+.modal .info .like {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  width: 25px;
+  height: 25px;
+  font-size: 36px;
+  color: #fff;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.modal .info .like:hover {
+  text-shadow: 0 0 20px red;
+}
+
+.modal .info .like .active {
+  color: red;
+}
+
 .modal .info .poster {
   width: 100%;
   border: 1px solid #000;
@@ -275,18 +303,18 @@ button {
           box-sizing: border-box;
 }
 
-.modal .info .rating {
-  font-size: 18px;
-  color: red;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
 .modal .info .title {
   font-size: 32px;
   font-weight: bold;
   text-align: center;
   padding: 5px 0;
+}
+
+.modal .info .rating {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .modal .info .category {
@@ -298,7 +326,78 @@ button {
   margin-top: 30px;
 }
 
-/*
+.favourite {
+  max-width: 700px;
+  padding: 15px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  background-color: #f1f11c;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-size: 32px;
+}
 
-        */
+.favourite-list .film {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f1f11c), to(#f19c1c));
+  background-image: linear-gradient(#f1f11c, #f19c1c);
+  border-radius: 4px;
+  padding: 15px;
+  max-width: 1110px;
+  margin: 15px auto 50px auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.favourite-list .film .poster {
+  width: 100%;
+  border: 1px solid #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.favourite-list .film .like {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  width: 25px;
+  height: 25px;
+  font-size: 36px;
+  color: #fff;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.favourite-list .film .like:hover {
+  text-shadow: 0 0 20px red;
+}
+
+.favourite-list .film .like .active {
+  color: red;
+}
+
+.favourite-list .film .title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.favourite-list .film .rating {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.favourite-list .film .category {
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.favourite-list .film .category:last-child {
+  margin-top: 30px;
+}
 /*# sourceMappingURL=style.css.map */
